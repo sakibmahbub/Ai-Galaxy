@@ -2,9 +2,7 @@ import React from "react";
 
 const SingleData = (props) => {
   const { id, name, image, features, published_in } = props.singleData;
-  const handleId = (id) => {
-    console.log(id);
-  };
+
   return (
     <div>
       <div className="card w-full bg-base-100 shadow-xl">

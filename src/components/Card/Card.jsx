@@ -5,12 +5,24 @@ import SingleData from "../SingleData/SingleData";
 
 const Card = () => {
   const [data, setData] = useState([]);
+  const [singleData, setSingleData] = useState({});
   const [showAll, setShowAll] = useState(false);
   const [uniqueId, setUniqueId] = useState(null);
 
   const handleShowAll = () => {
     setShowAll(true);
   };
+
+  useEffect(() => {
+    const loadId = async () => {
+      const res = await fetch(
+        `https://openapi.programming-hero.com/api/ai/tool/${uniqueId}`
+      );
+      const data = await res.json();
+      setSingleData(data.data);
+    };
+    loadId();
+  }, [uniqueId]);
 
   useEffect(() => {
     const loadData = async () => {
@@ -38,7 +50,7 @@ const Card = () => {
           <Button>See More</Button>
         </span>
       )}
-      <Modal></Modal>
+      <Modal singleData={singleData}></Modal>
     </>
   );
 };
