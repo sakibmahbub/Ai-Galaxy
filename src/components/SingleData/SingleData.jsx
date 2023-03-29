@@ -1,7 +1,10 @@
 import React from "react";
 
 const SingleData = (props) => {
-  const { name, image, features, published_in } = props.singleData;
+  const { id, name, image, features, published_in } = props.singleData;
+  const handleId = (id) => {
+    console.log(id);
+  };
   return (
     <div>
       <div className="card w-full bg-base-100 shadow-xl">
@@ -41,7 +44,11 @@ const SingleData = (props) => {
               <p>{published_in}</p>
             </div>
             <div>
-              <span className="cursor-pointer">
+              <label
+                onClick={() => props.setUniqueId(id)}
+                htmlFor="my-modal-5"
+                className="cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -56,7 +63,7 @@ const SingleData = (props) => {
                     d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                   />
                 </svg>
-              </span>
+              </label>
             </div>
           </div>
           {/* <p>If a dog chews shoes whose shoes does he choose?</p>
